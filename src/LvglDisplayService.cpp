@@ -62,6 +62,8 @@ void LvglDisplayService::registerDispDevice(LvglDisplayAdapter* disp){
       logErr("No memory for lvgl display buffer");
       return;
     }
+  } else {
+     buf1 = NULL;
   }
   lv_disp_draw_buf_init( &draw_buf, buf, buf1, disp->getScreenWidth() * disp->getScreenHeight() );
   lv_disp_drv_init( &disp_drv );

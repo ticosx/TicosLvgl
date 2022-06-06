@@ -11,6 +11,7 @@ LvgleSPIDisplayAdapter::LvgleSPIDisplayAdapter(int16_t screenWidth, int16_t scre
 {
   if(!tft){
     tft = new TFT_eSPI(screenWidth, screenHeight); /* TFT instance */
+    tft->begin();
   }
   disp_cb = LvgleSPIDisplayAdapter::display;
 }
@@ -29,7 +30,7 @@ void LvgleSPIDisplayAdapter::display(lv_disp_drv_t *disp, const lv_area_t *area,
 {
     uint32_t w = ( area->x2 - area->x1 + 1 );
     uint32_t h = ( area->y2 - area->y1 + 1 );
-
+    
     tft->startWrite();
     tft->setAddrWindow( area->x1, area->y1, w, h );
     tft->pushColors( ( uint16_t * )&color_p->full, w * h, true );

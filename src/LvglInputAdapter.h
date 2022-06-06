@@ -9,7 +9,8 @@
 class LvglInputAdapter : public InputAdapter {
   public:
     LvglInputAdapter(){};
-    LvglInputAdapter(Adafruit_I2CDevice *i2c) : InputAdapter(i2c){};
+    LvglInputAdapter(TwoWire* i2c, uint8_t addr) : InputAdapter(i2c, addr){};
+    LvglInputAdapter(Adafruit_I2CDevice *i2cdevice) : InputAdapter(i2cdevice){};
     virtual ~LvglInputAdapter(){};
     virtual void readLvglInputData(input_data* input) {};
 
