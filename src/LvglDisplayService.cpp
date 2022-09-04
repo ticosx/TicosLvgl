@@ -71,6 +71,7 @@ void LvglDisplayService::registerDispDevice(LvglDisplayAdapter* disp){
   disp_drv.hor_res = disp->getScreenWidth();
   disp_drv.ver_res = disp->getScreenHeight();
   disp_drv.flush_cb = disp->getDisplayCb();
+  disp_drv.rotated = disp->getRotation();
   disp_drv.draw_buf = &draw_buf;
   lv_disp_drv_register( &disp_drv );
 }
